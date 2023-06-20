@@ -6,7 +6,7 @@ authors = ["ovto <ovtyne@gmail.com>"]
 <<<<<<< HEAD
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8.10"
 isodate = "^0.6.1"
 
 [tool.poetry.dev-dependencies]
@@ -18,7 +18,7 @@ readme = "README.md"
 packages = [{include = "youtube_analytics_project"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8.10"
 
 
 [build-system]
