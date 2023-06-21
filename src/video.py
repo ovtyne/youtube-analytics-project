@@ -1,6 +1,7 @@
 import os
 
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 
 class Video:
@@ -13,6 +14,20 @@ class Video:
         video_response = self.youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                                     id=video_id
                                                     ).execute()
+
+        try:
+            self.title: str = video_response['items'][0]['snippet']['title']
+            self.view_count: int = video_response['items'][0]['statistics']['viewCount']
+            self.like_count: int = video_response['items'][0]['statistics']['likeCount']
+        except (AttributeError, IndexError):
+            self.title: str = None
+            self.view_count: int = None
+            self.like_count: int = None
+            self.comment_count: int = None
+            self.url_video = None
+            print('Не правильный id видео!')
+            return
+
         self.video_title: str = video_response['items'][0]['snippet']['title']  # название видео
         self.view_count: int = video_response['items'][0]['statistics']['viewCount']  # количество просмотров
         self.like_count: int = video_response['items'][0]['statistics']['likeCount']  # количество лайков
