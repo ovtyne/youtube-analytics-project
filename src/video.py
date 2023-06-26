@@ -20,10 +20,10 @@ class Video:
             self.view_count: int = video_response['items'][0]['statistics']['viewCount']
             self.like_count: int = video_response['items'][0]['statistics']['likeCount']
         except (AttributeError, IndexError):
-            self.title: str = None
-            self.view_count: int = None
-            self.like_count: int = None
-            self.comment_count: int = None
+            self.title = None
+            self.view_count = None
+            self.like_count = None
+            self.comment_count = None
             self.url_video = None
             print('Не правильный id видео!')
             return
